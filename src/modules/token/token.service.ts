@@ -8,6 +8,7 @@ const generateToken = (user: object): string => {
 };
 
 export const token = async (req: Request, res: Response): Promise<any> => {
+  console.log('teste teste teste');
   try {
     const token = generateToken({ user: 1 });
     return res.status(200).json({ token });
