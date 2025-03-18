@@ -13,6 +13,7 @@ export const token = async (req: Request, res: Response): Promise<any> => {
     const token = generateToken({ user: 1 });
     return res.status(200).json({ token });
   } catch (error: any) {
+    console.log(error);
     res.status(401).json({ error: error.message });
   }
 };
