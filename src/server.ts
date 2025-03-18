@@ -5,7 +5,7 @@ import cors from 'cors';
 import { token } from './modules/token/token.service'; // Import the token function directly
 
 dotenv.config();
-
+const PORT = process.env.PORT || 3939;
 const app = express();
 app.use(
   cors({
@@ -15,7 +15,6 @@ app.use(
 );
 app.use(express.json());
 
-const PORT = process.env.PORT || 3939;
 app.use((req, res, next) => {
   console.log('Headers recebidos:', req.headers);
   console.log('Body recebido:', req.body);
