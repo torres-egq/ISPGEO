@@ -16,15 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: '*',
-    methods: ['POST', 'GET', 'OPTIONS'], // Add missing methods
+    methods: ['GET'], // Add missing methods
     allowedHeaders: ['Content-Type'],
   })
 );
-
-// Add root route handler
-app.get('/', (req, res) => {
-  res.status(200).send('ISPGeo API Server');
-});
 
 // Then add your logging middleware
 app.use((req, res, next) => {
