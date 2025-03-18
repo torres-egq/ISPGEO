@@ -10,9 +10,9 @@ const generateToken = (user: object): string => {
 
 export const token = async (req: Request, res: Response): Promise<any> => {
   try {
-    const { user } = req.body;
-    if (user === undefined || user === null || user === '')
-      return res.status(401).json({ error: 'User is undefined' });
+    // const { user } = req.body;
+    // if (user === undefined || user === null || user === '')
+    //   return res.status(401).json({ error: 'User is undefined' });
     const token = generateToken(req.body);
     return res.status(200).json({ token }); // Corrigido: .json(200) -> .status(200)
   } catch (error: any) {
