@@ -9,7 +9,8 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: 'https://ispgeo.rj.gov.br',
+    origin: '*', // Corrigir domínio
+    // methods: ['POST'], // Adicionar métodos permitidos
   })
 );
 app.use(express.json());
