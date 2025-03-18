@@ -13,7 +13,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3939;
 
 // Use the root route to return the token
-app.get('/', token);
+app.post('/', token);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
