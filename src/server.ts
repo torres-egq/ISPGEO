@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: '*',
-    methods: ['POST', 'GET', 'OPTIONS'],  // Add missing methods
-    allowedHeaders: ['Content-Type']
+    methods: ['POST', 'GET', 'OPTIONS'], // Add missing methods
+    allowedHeaders: ['Content-Type'],
   })
 );
 
@@ -29,12 +29,12 @@ app.get('/', (req, res) => {
 // Then add your logging middleware
 app.use((req, res, next) => {
   console.log('Headers recebidos:', req.headers);
-  console.log('Body recebido:', req.body); 
+  console.log('Body recebido:', req.body);
   next();
 });
 
 // Existing POST route
-app.post('/', token);
+app.post('/token', token);
 
 // Adicione este middleware antes das rotas
 
