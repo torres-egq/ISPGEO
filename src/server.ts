@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-import geraToken from './modules/token.routes';
+import { token } from './modules/token/token.service'; // Import the token function directly
 
 dotenv.config();
 
@@ -12,7 +12,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3939;
 
-app.use('/auth', geraToken);
+// Use the root route to return the token
+app.get('/', token);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
