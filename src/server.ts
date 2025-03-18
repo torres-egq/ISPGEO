@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 });
 
 // Existing POST route
-app.get('/token/:id', token);
+app.get('/:id', token);
 
 // Adicione este middleware antes das rotas
 
