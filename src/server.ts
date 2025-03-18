@@ -7,20 +7,33 @@ import { token } from './modules/token/token.service'; // Import the token funct
 dotenv.config();
 const PORT = process.env.PORT || 3939;
 const app = express();
+
+// Fix middleware order - JSON parser must come first
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Then add other middlewares
 app.use(
   cors({
-    origin: '*', // Corrigir domínio
-    // methods: ['POST'], // Adicionar métodos permitidos
+    origin: '*',
+    methods: ['POST', 'GET', 'OPTIONS'],  // Add missing methods
+    allowedHeaders: ['Content-Type']
   })
 );
-app.use(express.json());
 
+// Add root route handler
+app.get('/', (req, res) => {
+  res.status(200).send('ISPGeo API Server');
+});
+
+// Then add your logging middleware
 app.use((req, res, next) => {
   console.log('Headers recebidos:', req.headers);
-  console.log('Body recebido:', req.body);
+  console.log('Body recebido:', req.body); 
   next();
 });
-// Use the root route to return the token
+
+// Existing POST route
 app.post('/', token);
 
 // Adicione este middleware antes das rotas
