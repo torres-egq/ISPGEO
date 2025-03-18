@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 
 // Handle GET request to generate token
 app.get(
-  '/ispgeo',
+  '/token',
   async (req: express.Request, res: express.Response): Promise<any> => {
     const user = req.query.user;
     if (!user) {
