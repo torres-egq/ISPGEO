@@ -30,11 +30,13 @@ app.get('/', (req, res) => {
 app.use((req, res, next) => {
   console.log('Headers recebidos:', req.headers);
   console.log('Body recebido:', req.body);
+  console.log('Query recebido:', req.query);
+  console.log('Params recebido:', req.params);
   next();
 });
 
 // Existing POST route
-app.post('/token', token);
+app.get('/token/:id', token);
 
 // Adicione este middleware antes das rotas
 
