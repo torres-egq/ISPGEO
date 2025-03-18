@@ -10,7 +10,6 @@ const generateToken = (user: object): string => {
 
 export const token = async (req: Request, res: Response): Promise<any> => {
   try {
-    console.log(req);
     const { user } = req.body;
     if (user === undefined || user === null || user === '')
       return res.status(401).json({ error: 'User is undefined' });
