@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 const generateToken = (user: object): string => {
-  console.log(user);
   return jwt.sign(user, process.env.JWT_SECRET as string, {
     expiresIn: '1h',
   });

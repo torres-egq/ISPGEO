@@ -30,19 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  const user = req.query.user;
-  if (!user) {
-    return res.status(400).json({ error: 'User parameter is required' });
-  }
-  const token = generateToken({ user });
-  res.json({ token });
-});
-
-// Remove other routes and keep only this
 app.get('/:id', token);
-
-// Adicione este middleware antes das rotas
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
