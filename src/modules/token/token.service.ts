@@ -13,8 +13,8 @@ export const token = async (req: Request, res: Response): Promise<any> => {
     // const { user } = req.body;
     // if (user === undefined || user === null || user === '')
     //   return res.status(401).json({ error: 'User is undefined' });
-    console.log(req.query);
-    const token = generateToken(req.query);
+
+    const token = generateToken({ user: 1 });
     return res.status(200).json({ token }); // Corrigido: .json(200) -> .status(200)
   } catch (error: any) {
     console.log(error);
